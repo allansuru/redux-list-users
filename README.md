@@ -1,4 +1,4 @@
-# Project Title
+# Lista de usua´rios by NGRX
 
 Configurações e lista de usuários usando ngrx
 
