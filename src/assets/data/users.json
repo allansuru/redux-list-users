@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Cloud",
+      "cardNumber": "XXXX-XXXX-XXXX-4321",
+      "cardType": "Visa"
+    },
+    {
+      "id": 2,
+      "name": "Sephiroth",
+      "cardNumber": "XXXX-XXXX-XXXX-1369",
+      "cardType": "Master"
+    },
+    {
+      "id": 3,
+      "name": "Aeris",
+      "cardNumber": "XXXX-XXXX-XXXX-8888",
+      "cardType": "Visa"
+    }
+  ]
+}
