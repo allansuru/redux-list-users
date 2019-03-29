@@ -15,7 +15,9 @@ export class UsersComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.users);
+  }
 
   navigateToUser(id: number) {
     this.userSelected.emit(id);

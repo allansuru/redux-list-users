@@ -1,4 +1,4 @@
-import { GetUsers } from './../../store/actions/user.actions';
+import { GetUsers, CreateUser } from './../../store/actions/user.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
@@ -21,5 +21,13 @@ export class UsersComponent implements OnInit {
 
   navigateToUser(id: number) {
     this.router.navigate(['user', id]);
+  }
+  addUser() {
+    this.store.dispatch(new CreateUser({
+      id: Math.random(),
+      name: 'Allan',
+      cardNumber: 'xxxx123',
+      cardType: 'mastercard'
+    }));
   }
 }

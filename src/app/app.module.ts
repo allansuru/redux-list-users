@@ -17,6 +17,7 @@ import { UsersComponent as UsersContainerComponent } from './containers/users/us
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './containers/user/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { NewComponent } from './containers/new/new.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     UsersContainerComponent,
     UsersComponent,
     UserComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    NewComponent
   ],
   imports: [
     BrowserModule,

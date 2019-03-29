@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
 import { of } from 'rxjs';
-import { switchMap, map, withLatestFrom } from 'rxjs/operators';
+import { switchMap, map, withLatestFrom, catchError } from 'rxjs/operators';
 
 import { IAppState } from '../state/app.state';
 
@@ -11,6 +11,7 @@ import * as fromUser from '../actions/user.actions';
 import { UserService } from '../../services/user.service';
 import { IUserHttp } from '../../models/http-models/user-http.interface';
 import { selectUserList } from '../selectors/user.selector';
+
 
 @Injectable()
 export class UserEffects {
@@ -35,7 +36,21 @@ export class UserEffects {
 	@Effect()
 	getUsers$ = this.actions$.pipe(
 		ofType<fromUser.GetUsers>(fromUser.EUserActions.GetUsers),
-		switchMap(() => this.userService.getUsers()),
-		switchMap((userHttp: IUserHttp) => of(new fromUser.GetUsersSuccess(userHttp.users)))
-	);
+		switchMap(() => {
+			return this.userService.getUsers().pipe(
+				map(users => new fromUser.GetUsersSuccess(users)),
+				catchError(error => of(console.log(error)))
+			);
+		}));
+
+	@Effect()
+	createUser$ = this.actions$.pipe(ofType(fromUser.EUserActions.CreateUser),
+		switchMap(iUser => {
+			return this.userService.createUser(iUser['payload']).pipe(
+				// tslint:disable-next-line:no-shadowed-variable
+				map(iUser => new fromUser.CreateUserSuccess(iUser)),
+				catchError(error => of(console.log(error)))
+			);
+		}));
 }
+

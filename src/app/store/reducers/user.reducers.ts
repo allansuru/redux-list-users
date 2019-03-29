@@ -15,6 +15,12 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
         selectedUser: action.payload
       };
     }
+    case EUserActions.CreateUserSuccess: {
+      return {
+         ...state,
+        user: action.payload
+      };
+    }
 
     default:
       return state;
