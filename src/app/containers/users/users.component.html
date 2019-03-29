@@ -1,4 +1,5 @@
 <app-users [users]="users$ | async"
+  (remove)="removeUser($event)"
   (userSelected)="navigateToUser($event)"></app-users>
 
 <button (click)="addUser()" type="button" class="btn btn-primary">add mockado</button>

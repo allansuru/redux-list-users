@@ -8,12 +8,19 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users"
-      (click)="navigateToUser(user.id)">
-      <td>{{ user.id }}</td>
+    <tr *ngFor="let user of users">
+      <td  (click)="navigateToUser(user.id)">{{ user.id }}</td>
       <td>{{ user.name }}</td>
       <td>{{ user.cardNumber }}</td>
       <td>{{ user.cardType }}</td>
+            <td>
+          <button
+            type="button"
+            class="btn btn__warning"
+            (click)="removeUser(user)">
+            Delete User
+          </button>
+      </td>
     </tr>
   </tbody>
 </table>

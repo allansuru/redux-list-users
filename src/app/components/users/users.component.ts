@@ -12,14 +12,18 @@ export class UsersComponent implements OnInit {
   users: IUser[];
   @Output()
   userSelected: EventEmitter<number> = new EventEmitter();
+  @Output() remove = new EventEmitter<IUser>();
 
   constructor() {}
 
   ngOnInit() {
-    console.log(this.users);
   }
 
   navigateToUser(id: number) {
     this.userSelected.emit(id);
+  }
+
+  removeUser(user: IUser) {
+    this.remove.emit(user);
   }
 }

@@ -1,6 +1,7 @@
 import { EUserActions, UserActions } from './../actions/user.actions';
 import { initialUserState, IUserState } from '../state/user.state';
 
+
 export const userReducers = (state = initialUserState, action: UserActions): IUserState => {
   switch (action.type) {
     case EUserActions.GetUsersSuccess: {
@@ -19,6 +20,14 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
       return {
          ...state,
         user: action.payload
+      };
+    }
+    case EUserActions.RemoveUserSuccess: {
+      debugger
+      const users = state.users.filter(u => u.id !== action.payload.id);
+      return {
+        ...state,
+        users: users
       };
     }
 

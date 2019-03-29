@@ -1,4 +1,4 @@
-import { GetUsers, CreateUser } from './../../store/actions/user.actions';
+import { GetUsers, CreateUser, RemoveUser } from './../../store/actions/user.actions';
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
@@ -29,5 +29,9 @@ export class UsersComponent implements OnInit {
       cardNumber: 'xxxx123',
       cardType: 'mastercard'
     }));
+  }
+
+  removeUser(event) {
+    this.store.dispatch(new RemoveUser(event));
   }
 }

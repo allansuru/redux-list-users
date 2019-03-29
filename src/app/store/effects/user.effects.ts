@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, ofType, Actions } from '@ngrx/effects';
 import { Store, select } from '@ngrx/store';
-import { of } from 'rxjs';
+import { of, from } from 'rxjs';
 import { switchMap, map, withLatestFrom, catchError } from 'rxjs/operators';
 
 import { IAppState } from '../state/app.state';
@@ -52,5 +52,15 @@ export class UserEffects {
 				catchError(error => of(console.log(error)))
 			);
 		}));
+
+	@Effect()
+	removeUser$ = this.actions$.pipe(ofType(fromUser.EUserActions.RemoveUser),
+		map((action: fromUser.RemoveUser) => action.payload),
+		switchMap(user => {
+			debugger
+			return this.userService.removeUser(user).pipe(
+				map(() => new fromUser.RemoveUserSuccess(user)),
+						catchError(error => of(console.log(error))));
+			}));
 }
 
