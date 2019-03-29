@@ -35,7 +35,7 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
       const users = state.users.filter(u => u.id !== action.payload.id);
       return {
         ...state,
-        users: users
+       users
       };
     }
 
