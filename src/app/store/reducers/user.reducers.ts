@@ -1,5 +1,6 @@
 import { EUserActions, UserActions } from './../actions/user.actions';
 import { initialUserState, IUserState } from '../state/user.state';
+import { IUser } from 'src/app/models/user.interface';
 
 
 export const userReducers = (state = initialUserState, action: UserActions): IUserState => {
@@ -16,14 +17,21 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
         selectedUser: action.payload
       };
     }
+
     case EUserActions.CreateUserSuccess: {
+      const newUser = action.payload;
+      const users = [
+        ...state.users,
+         newUser
+      ];
+
       return {
-         ...state,
-        user: action.payload
+        ...state,
+         users
       };
     }
+
     case EUserActions.RemoveUserSuccess: {
-      debugger
       const users = state.users.filter(u => u.id !== action.payload.id);
       return {
         ...state,

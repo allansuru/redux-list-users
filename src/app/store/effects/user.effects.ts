@@ -57,7 +57,6 @@ export class UserEffects {
 	removeUser$ = this.actions$.pipe(ofType(fromUser.EUserActions.RemoveUser),
 		map((action: fromUser.RemoveUser) => action.payload),
 		switchMap(user => {
-			debugger
 			return this.userService.removeUser(user).pipe(
 				map(() => new fromUser.RemoveUserSuccess(user)),
 						catchError(error => of(console.log(error))));

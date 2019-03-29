@@ -23,6 +23,7 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['user', id]);
   }
   addUser() {
+    // jogar pro component, emitindo para ca, q nem o remove!
     this.store.dispatch(new CreateUser({
       id: Math.random(),
       name: 'Allan',
