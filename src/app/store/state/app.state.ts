@@ -8,11 +8,16 @@ export interface IAppState {
   router?: RouterReducerState;
   users: IUserState;
   config: IConfigState;
+   loaded: boolean;
+  loading: boolean;
+
 }
 
 export const initialAppState: IAppState = {
   users: initialUserState,
-  config: initialConfigState
+  config: initialConfigState,
+   loaded: false,
+  loading: false
 };
 
 export function getInitialState(): IAppState {

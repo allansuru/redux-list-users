@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   constructor(private store: Store<IAppState>, private router: Router) {}
 
   ngOnInit() {
+    debugger
     this.store.dispatch(new GetUsers());
   }
 
@@ -25,7 +26,7 @@ export class UsersComponent implements OnInit {
   addUser() {
     // jogar pro component, emitindo para ca, q nem o remove!
     this.store.dispatch(new CreateUser({
-      id: Math.random(),
+      id: Math.floor(Math.random() * 100),
       name: 'Allan',
       cardNumber: 'xxxx123',
       cardType: 'mastercard'

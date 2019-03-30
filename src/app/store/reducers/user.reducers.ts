@@ -8,7 +8,9 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
     case EUserActions.GetUsersSuccess: {
       return {
         ...state,
-        users: action.payload
+        users: action.payload,
+        loading: false,
+        loaded: true,
       };
     }
     case EUserActions.GetUserSuccess: {
@@ -43,3 +45,6 @@ export const userReducers = (state = initialUserState, action: UserActions): IUs
       return state;
   }
 };
+
+
+export const getUsersLoaded = (state: IUserState) => state.loaded;

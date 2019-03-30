@@ -19,6 +19,9 @@ import { UserComponent } from './containers/user/user.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { NewComponent } from './containers/new/new.component';
 
+// guards
+import * as fromGuards from './guards';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,7 @@ import { NewComponent } from './containers/new/new.component';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     AppRoutingModule
   ],
-  providers: [UserService],
+  providers: [UserService, fromGuards.guards],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
